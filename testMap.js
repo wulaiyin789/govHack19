@@ -5,6 +5,7 @@ getResult();
 
 var suburb = [];
 var people = [];
+var lastPos = null;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -16,6 +17,12 @@ function initMap() {
     "https://data.gov.au/geoserver/qld-suburb-locality-boundaries-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_6bedcb55_1b1f_457b_b092_58e88952e9f0&outputFormat=json"
   );
   map.data.addListener("click", function(event) {
+    if (lastPos != null) {
+      map.data.overrideStyle(lastPos.feature, { fillColor: "#C7B2B2" });
+    }
+    map.data.overrideStyle(event.feature, { fillColor: "red" });
+    lastPos = event;
+
     geocodeLatLng(geocoder, event.latLng.lat(), event.latLng.lng());
   });
   map.data.setStyle({
@@ -34,6 +41,12 @@ function geocodeLatLng(geocoder, lat, long) {
         let res = arrRes.push(results[0].formatted_address.split(",")[1]);
 
         document.querySelector(".surburb").textContent = arrRes[0];
+        //Following data are hard coded based on statistics published by ABS
+        document.querySelector(".unemploy").textContent = "6.1%";
+        document.querySelector(".age").textContent = "37.2";
+        document.querySelector(".sex").textContent = "98.3";
+        document.querySelector(".income").textContent = "1575.6";
+        document.querySelector(".industry").textContent = "Education/Tourism";
 
         var sub = arrRes[0].split(" ")[1];
         //console.log(sub);
