@@ -66,7 +66,7 @@ function getResult() {
     })
     .then(people => {
       var result = JSON.stringify(people);
-      var resultArray = result.substr(1572).split("]");
+      var resultArray = result.substr(1572).split("]"); //Start of the brackets e.g. data ignoring the header
 
       // resultArray.map
 
