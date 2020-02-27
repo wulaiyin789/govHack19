@@ -3,6 +3,9 @@
 ## Website Example
 https://5e5773f927ae20297f9e7cad--tender-mcnulty-de0e96.netlify.com/
 
+## Our Project Description
+https://hackerspace.govhack.org/projects/project_812
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
